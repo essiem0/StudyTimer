@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'datafunction.dart';
 
+bool firstTouched = false;
+
 class Subject {
   int subNum;
   int fixsec;

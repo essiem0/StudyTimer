@@ -29,10 +29,13 @@ class _HomePageState extends State<HomePage> {
     double screenWidth = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
-        Timer.periodic(const Duration(milliseconds: 1000), (timer) {
-          print("updatestart");
-          setState(() {});
-        });
+        if (firstTouched == false) {
+          firstTouched = true;
+          Timer.periodic(const Duration(milliseconds: 100), (timer) {
+            print("updatestart");
+            setState(() {});
+          });
+        }
       },
       child: Scaffold(
         body: Container(
@@ -59,6 +62,15 @@ class _HomePageState extends State<HomePage> {
                         ),
                         GestureDetector(
                           onTap: () {
+                            if (firstTouched == false) {
+                              firstTouched = true;
+                              Timer.periodic(const Duration(milliseconds: 100),
+                                  (timer) {
+                                print("updatestart");
+                                setState(() {});
+                              });
+                            }
+
                             Get.to(() => const Menu(),
                                 transition: Transition.leftToRight);
                           },
