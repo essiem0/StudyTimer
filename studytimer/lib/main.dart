@@ -7,8 +7,10 @@ import 'datafunction.dart';
 
 void main() async {
   await Hive.initFlutter();
+
   var sub = await Hive.openBox('sub');
   var ts = await Hive.openBox('ts');
+
   initHive();
   WidgetsFlutterBinding.ensureInitialized();
   Wakelock.enable();
@@ -27,7 +29,10 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'MainApp',
-      theme: ThemeData(useMaterial3: true, fontFamily: 'pretendard'),
+      theme: ThemeData(
+          useMaterial3: true,
+          fontFamily: 'pretendard',
+          colorSchemeSeed: Colors.indigo),
       home: const HomePage(title: 'MainApp'),
     );
   }
