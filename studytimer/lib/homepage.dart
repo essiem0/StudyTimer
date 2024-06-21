@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'dart:async';
 import 'menu.dart';
@@ -25,175 +27,227 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          color: Color(0xFF181a33),
-        ),
-        width: double.infinity,
-        height: double.infinity,
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: screenHeight / 844 * 70,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      SizedBox(
-                        width: screenWidth / 390 * 20,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.to(() => const Menu(),
-                              transition: Transition.leftToRight);
-                        },
-                        child: const Icon(
-                          Icons.menu_rounded,
-                          color: Color(0xFFff9d35),
-                          size: 50,
+    return GestureDetector(
+      onTap: () {
+        Timer.periodic(const Duration(milliseconds: 1000), (timer) {
+          print("updatestart");
+          setState(() {});
+        });
+      },
+      child: Scaffold(
+        body: Container(
+          decoration: const BoxDecoration(
+            color: Color(0xFF181a33),
+          ),
+          width: double.infinity,
+          height: double.infinity,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: screenHeight / 844 * 70,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: screenWidth / 390 * 20,
                         ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            resetButton();
-                          });
-                        },
-                        child: const Icon(
-                          Icons.refresh_rounded,
-                          color: Color(0xFFff9d35),
-                          size: 50,
+                        GestureDetector(
+                          onTap: () {
+                            Get.to(() => const Menu(),
+                                transition: Transition.leftToRight);
+                          },
+                          child: const Icon(
+                            Icons.menu_rounded,
+                            color: Color(0xFFff9d35),
+                            size: 50,
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        width: screenWidth / 390 * 20,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: screenHeight / 844 * 50,
-              ),
-              SizedBox(
-                width: screenWidth * 0.7,
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "총 공부시간",
-                        style: TextStyle(
-                            fontSize: 33,
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              resetButton();
+                            });
+                          },
+                          child: const Icon(
+                            Icons.refresh_rounded,
+                            color: Color(0xFFff9d35),
+                            size: 50,
+                          ),
+                        ),
+                        SizedBox(
+                          width: screenWidth / 390 * 20,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: screenHeight / 844 * 50,
+                ),
+                SizedBox(
+                  width: screenWidth * 0.7,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 25),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "총 공부시간",
+                          style: TextStyle(
+                              fontSize: 33,
+                              color: Color(0xFFF4EDDB),
+                              fontWeight: FontWeight.w600),
+                        ),
+                        Text(
+                          secLenth(totalSeconds),
+                          style: const TextStyle(
+                            fontSize: 35,
                             color: Color(0xFFF4EDDB),
-                            fontWeight: FontWeight.w600),
-                      ),
-                      Text(
-                        secLenth(totalSeconds),
-                        style: const TextStyle(
-                          fontSize: 35,
-                          color: Color(0xFFF4EDDB),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: screenHeight / 844 * 50,
-              ),
-              Container(
-                //sub1
-                width: screenWidth - 40,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: const Color(0xFFF4EDDB),
+                SizedBox(
+                  height: screenHeight / 844 * 50,
                 ),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                Container(
+                  //sub2
+                  width: screenWidth - 40,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: const Color(0xFFF4EDDB),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 30),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            subjects[0].name,
-                            style: const TextStyle(
-                                fontSize: 30,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w600),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                subjects[0].name,
+                                style: const TextStyle(
+                                    fontSize: 30,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                              Text(
+                                secLenth(subjects[0].seconds),
+                                style: const TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
                           ),
-                          Text(
-                            secLenth(subjects[0].seconds),
-                            style: const TextStyle(
-                              fontSize: 30,
-                              color: Colors.black,
-                            ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  startButton(0);
+                                },
+                                child: subjects[0].iconSelect(),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              startButton(0);
-                              Timer.periodic(const Duration(milliseconds: 10),
-                                  (timer) {
-                                setState(() {});
-                              });
-                            },
-                            child: subjects[0].iconSelect(),
-                          ),
-                        ],
-                      ),
-                    ],
+                        ]),
                   ),
                 ),
-              ),
-              SizedBox(height: screenHeight / 844 * 25),
-              Container(
-                //sub2
-                width: screenWidth - 40,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: const Color(0xFFF4EDDB),
+                SizedBox(height: screenHeight / 844 * 25),
+                Container(
+                  //sub2
+                  width: screenWidth - 40,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: const Color(0xFFF4EDDB),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 30),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                subjects[1].name,
+                                style: const TextStyle(
+                                    fontSize: 30,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                              Text(
+                                secLenth(subjects[1].seconds),
+                                style: const TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  startButton(1);
+                                },
+                                child: subjects[1].iconSelect(),
+                              ),
+                            ],
+                          ),
+                        ]),
+                  ),
                 ),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-                  child: Row(
+                SizedBox(height: screenHeight / 844 * 25),
+                Container(
+                  //sub3
+                  width: screenWidth - 40,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: const Color(0xFFF4EDDB),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 30),
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              subjects[1].name,
+                              subjects[2].name,
                               style: const TextStyle(
                                   fontSize: 30,
                                   color: Colors.black,
                                   fontWeight: FontWeight.w600),
                             ),
                             Text(
-                              secLenth(subjects[1].seconds),
+                              secLenth(subjects[2].seconds),
                               style: const TextStyle(
                                 fontSize: 30,
                                 color: Colors.black,
@@ -209,76 +263,19 @@ class _HomePageState extends State<HomePage> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                startButton(1);
-                                Timer.periodic(const Duration(milliseconds: 10),
-                                    (timer) {
-                                  setState(() {});
-                                });
+                                startButton(2);
                               },
-                              child: subjects[1].iconSelect(),
+                              child: subjects[2].iconSelect(),
                             ),
                           ],
                         ),
-                      ]),
-                ),
-              ),
-              SizedBox(height: screenHeight / 844 * 25),
-              Container(
-                //sub3
-                width: screenWidth - 40,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: const Color(0xFFF4EDDB),
-                ),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            subjects[2].name,
-                            style: const TextStyle(
-                                fontSize: 30,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w600),
-                          ),
-                          Text(
-                            secLenth(subjects[2].seconds),
-                            style: const TextStyle(
-                              fontSize: 30,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              startButton(2);
-                              Timer.periodic(const Duration(milliseconds: 10),
-                                  (timer) {
-                                setState(() {});
-                              });
-                            },
-                            child: subjects[2].iconSelect(),
-                          ),
-                        ],
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(height: screenHeight / 844 * 25),
-            ],
+                SizedBox(height: screenHeight / 844 * 25),
+              ],
+            ),
           ),
         ),
       ),

@@ -98,7 +98,7 @@ class _MenuState extends State<Menu> {
                             ),
                           ),
                           SizedBox(
-                            height: screenHeight / 844 * 20,
+                            height: screenHeight / 844 * 30,
                           ),
                           Row(
                             children: [
@@ -194,7 +194,191 @@ class _MenuState extends State<Menu> {
                                                   const SizedBox(height: 10),
                                                 ],
                                               ),
-                                            ))
+                                            )),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Column(
+                                          children: [
+                                            const SizedBox(
+                                              height: 20,
+                                            ),
+                                            Text(
+                                              "2   ",
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.black
+                                                      .withOpacity(0.5)),
+                                            ),
+                                          ],
+                                        ),
+                                        Container(
+                                            width: screenWidth - 80,
+                                            decoration: BoxDecoration(
+                                              color: Colors.black
+                                                  .withOpacity(0.25),
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                            ),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 10,
+                                                      horizontal: 27),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  TextField(
+                                                    cursorColor: Colors.black
+                                                        .withOpacity(0.5),
+                                                    decoration:
+                                                        const InputDecoration(
+                                                      hintText: '과목 이름을 입력해주세요',
+                                                      // focusedBorder: tborder,
+                                                      // enabledBorder: tborder,
+                                                      // border: tborder
+                                                    ),
+                                                    keyboardType:
+                                                        TextInputType.text,
+                                                    onSubmitted: (value) {
+                                                      setState(() {
+                                                        subjects[1].name =
+                                                            value;
+                                                      });
+                                                    },
+                                                  ),
+                                                  const SizedBox(height: 10),
+                                                  TextField(
+                                                    cursorColor: Colors.black
+                                                        .withOpacity(0.5),
+                                                    decoration:
+                                                        const InputDecoration(
+                                                      hintText: '목표 시간을 입력해주세요',
+                                                      // enabledBorder: tborder,
+                                                      // border: tborder
+                                                    ),
+                                                    keyboardType:
+                                                        TextInputType.number,
+                                                    onSubmitted: (value) {
+                                                      setState(() {
+                                                        print(value);
+                                                        print(int.parse(value));
+                                                        subjects[1].seconds =
+                                                            int.parse(value) *
+                                                                60;
+
+                                                        subjects[1].fixsec =
+                                                            int.parse(value) *
+                                                                60;
+                                                      });
+                                                    },
+                                                  ),
+                                                  const SizedBox(height: 10),
+                                                ],
+                                              ),
+                                            )),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Column(
+                                          children: [
+                                            const SizedBox(
+                                              height: 20,
+                                            ),
+                                            Text(
+                                              "3   ",
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.black
+                                                      .withOpacity(0.5)),
+                                            ),
+                                          ],
+                                        ),
+                                        Container(
+                                            width: screenWidth - 80,
+                                            decoration: BoxDecoration(
+                                              color: Colors.black
+                                                  .withOpacity(0.25),
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                            ),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 10,
+                                                      horizontal: 27),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  TextField(
+                                                    cursorColor: Colors.black
+                                                        .withOpacity(0.5),
+                                                    decoration:
+                                                        const InputDecoration(
+                                                      hintText: '과목 이름을 입력해주세요',
+                                                      // focusedBorder: tborder,
+                                                      // enabledBorder: tborder,
+                                                      // border: tborder
+                                                    ),
+                                                    keyboardType:
+                                                        TextInputType.text,
+                                                    onSubmitted: (value) {
+                                                      setState(() {
+                                                        subjects[2].name =
+                                                            value;
+                                                      });
+                                                    },
+                                                  ),
+                                                  const SizedBox(height: 10),
+                                                  TextField(
+                                                    cursorColor: Colors.black
+                                                        .withOpacity(0.5),
+                                                    decoration:
+                                                        const InputDecoration(
+                                                      hintText: '목표 시간을 입력해주세요',
+                                                      // enabledBorder: tborder,
+                                                      // border: tborder
+                                                    ),
+                                                    keyboardType:
+                                                        TextInputType.number,
+                                                    onSubmitted: (value) {
+                                                      setState(() {
+                                                        print(value);
+                                                        print(int.parse(value));
+                                                        subjects[2].seconds =
+                                                            int.parse(value) *
+                                                                60;
+
+                                                        subjects[2].fixsec =
+                                                            int.parse(value) *
+                                                                60;
+                                                      });
+                                                    },
+                                                  ),
+                                                  const SizedBox(height: 10),
+                                                ],
+                                              ),
+                                            )),
                                       ],
                                     ),
                                   ])
