@@ -1,0 +1,37 @@
+name: studytimer
+description: "The best StudyTimer for you."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.3.1 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  get:
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  cupertino_icons: ^1.0.6
+  wakelock: ^0.6.2
+  shared_preferences: ^2.2.3
+  change_app_package_name: ^1.2.0
+  flutter_native_splash: ^2.4.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  hive_generator: ^2.0.1
+  build_runner: ^2.4.9
+
+flutter:
+  uses-material-design: true
+
+fonts:
+    - family: Pretendard
+      fonts:
+        - asset: assets/fonts/Pretendard-Bold.otf
+        - asset: assets/fonts/Pretendard-SemiBold.otf
+        - asset: assets/fonts/Pretendard-Regular.otf
+
